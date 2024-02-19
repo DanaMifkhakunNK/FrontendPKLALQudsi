@@ -1,7 +1,7 @@
 import React from "react";
 
 function tambahGaleri() {
-  return <div>addGaleri</div>;
+  return <div>padkajdajdj</div>;
 }
 
 export default tambahGaleri;
