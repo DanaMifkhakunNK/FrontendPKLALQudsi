@@ -41,7 +41,7 @@ const PlaceAbout = [
 ];
 function Tentang() {
   return (
-    <div className="min-h-screen pt-16 bg-gray-100" id="tentang">
+    <div className="min-h-screen pt-16 bg-green-100" id="tentang">
       <section data-aos="fade-up" className="container ">
         <h1 className=" my-8 border-l-8 border-primary/50 py-2 pl-2 text-3xl font-bold">Tentang AL Qudsi</h1>
         <div className=" flex gap-2 justify-center flex-col text-justify pb-14">

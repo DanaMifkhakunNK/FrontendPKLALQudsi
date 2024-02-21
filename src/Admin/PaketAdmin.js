@@ -1,8 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
-import img1 from "../assets/wp.png";
+import img1 from "../assets/brosur1.jpg";
 import img2 from "../assets/wp2.jpg";
-import img3 from "../assets/wp.png";
 import { Link } from "react-router-dom";
 const PlacesData = [
   {
@@ -21,7 +20,7 @@ const PlacesData = [
   },
   {
     id: "3",
-    img: img3,
+    img: img1,
     title: "Umrah Premium",
     time: "2 Juli 2024",
     price: "33",

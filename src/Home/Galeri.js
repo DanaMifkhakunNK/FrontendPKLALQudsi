@@ -1,8 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
-import img1 from "../assets/wp.png";
-import img2 from "../assets/wp2.jpg";
-import img3 from "../assets/banner.jpg";
+import img1 from "../assets/galeri1.jpg";
+import img2 from "../assets/galeri2.jpg";
+import img3 from "../assets/galeri3.jpg";
 
 function Galeri() {
   const slides = [
@@ -94,7 +94,7 @@ function Galeri() {
   };
 
   return (
-    <div className="pt-16 bg-gray-100" id="galeri">
+    <div className="pt-16 bg-green-100" id="galeri">
       <div className="container">
         {/* 
       </div>
@@ -113,7 +113,7 @@ function Galeri() {
             {slides.map(({ url }) => {
               return (
                 <div className="my-6">
-                  <div className="flex flex-col justify-center items-center gap-4 h-[36vh] text-center shadow-lg p-4 mx-4 rounded-xl bg-primary/10 relative">
+                  <div className="flex flex-col justify-center items-center gap-4 h-[45vh] text-center shadow-lg p-4 mx-4 rounded-xl bg-primary/10 relative">
                     <img src={url} alt="" className=" block mx-auto rounded-md" />
                   </div>
                 </div>

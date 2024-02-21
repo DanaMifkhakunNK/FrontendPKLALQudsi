@@ -20,8 +20,8 @@ function LoginAdmin() {
         <div className="text-center md:text-left">
           <h3 className="mr-1 mb-2 font-semibold">Admin AL Qudsi</h3>
         </div>
-        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Email Address" name="username" value={adminData.username} onChange={changeInputHandler} autoFocus />
-        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="password" placeholder="Password" name="password" value={adminData.password} onChange={changeInputHandler} />
+        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Email Address" name="username" value={adminData.username} onChange={changeInputHandler} autoFocus required />
+        <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="password" placeholder="Password" name="password" value={adminData.password} onChange={changeInputHandler} required />
         <div className="text-center md:text-left">
           <button className="mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">
             Login

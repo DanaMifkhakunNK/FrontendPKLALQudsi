@@ -1,7 +1,6 @@
 import React from "react";
-import img1 from "../assets/wp.png";
-import img2 from "../assets/wp2.jpg";
-import img3 from "../assets/wp.png";
+import img1 from "../assets/brosur1.jpg";
+import img2 from "../assets/brosur1.jpg";
 
 const PlacesData = [
   {
@@ -17,7 +16,7 @@ const PlacesData = [
     price: "35",
   },
   {
-    img: img3,
+    img: img1,
     title: "Umrah Premium",
     time: "2 Juli 2024",
     price: "33",
@@ -26,14 +25,14 @@ const PlacesData = [
 function Paket() {
   return (
     <>
-      <div className="pt-16 bg-gray-50 py-10" id="paket">
+      <div className="pt-16 bg-green-50 py-10" id="paket">
         <section data-aos="fade-up" className="container ">
           <h1 className=" my-8 border-l-8 border-primary/50 py-2 pl-2 text-3xl font-bold">Best Places to Visit</h1>
           <div className=" grid-auto-fit-sm grid gap-4">
             {PlacesData.map(({ img, title, time, price }) => (
               <div className="shadow-lg transition-all duration-500 hover:shadow-xl cursor-pointer">
                 <div className="overflow-hidden">
-                  <img src={img} alt="No image" className="mx-auto h-[220px] w-full object-cover transition duration-700 hover:skew-x-2 hover:scale-110" />
+                  <img src={img} alt="No image" className="mx-auto w-full object-cover transition duration-700 hover:skew-x-2 hover:scale-110" />
                 </div>
                 <div className="space-y-2 p-3">
                   <h1 className="line-clamp-1 font-bold text-xl">{title}</h1>
