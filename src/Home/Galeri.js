@@ -59,7 +59,7 @@ function Galeri() {
     arrows: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -68,7 +68,7 @@ function Galeri() {
     pauseOnFocus: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1025,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -96,24 +96,13 @@ function Galeri() {
   return (
     <div className="pt-16 " id="galeri">
       <div className="container">
-        {/* 
-      </div>
-      <section data-aos="zoom-in" className="w-full">
-        <div className="slide-container">
-          <Slider {...settings} className="">
-            {slides.map(({ url }) => (
-              <img className="flex m-auto p-1 h-[50vh] w-[100%] rounded-lg" src={url} />
-            ))}
-          </Slider>
-        </div>
-      </section> */}
         <div data-aos="zoom-in" data-aos-duration="300" className="grid grid-cols-1 mx-auto gap-6">
           <h1 className=" my-8 border-l-8 border-primary/50 py-1 pl-1 text-2xl font-bold">Galeri</h1>
           <Slider {...settings}>
             {slides.map(({ url }) => {
               return (
                 <div className="my-6">
-                  <div className="flex flex-col justify-center items-center gap-4 h-[45vh] text-center shadow-lg p-4 mx-4 rounded-xl bg-primary/10 relative">
+                  <div className="flex flex-col justify-center items-center gap-4 lg:h-[30vh] md:h-[25vh] h-[40vh] text-center shadow-lg p-4 mx-4 rounded-xl bg-primary/10 relative">
                     <img src={url} alt="" className=" block mx-auto rounded-md" />
                   </div>
                 </div>

@@ -7,7 +7,6 @@ import ErrorPage from "./components/ErrorPage";
 import Home from "./Home";
 import LoginAdmin from "./Admin/LoginAdmin";
 import EditPaket from "./Admin/EditPaket";
-import DeletePaket from "./Admin/DeletePaket";
 import CreatePaket from "./Admin/CreatePaket";
 import GaleriAdmin from "./Admin/GaleriAdmin";
 import PaketAdmin from "./Admin/PaketAdmin";
@@ -30,7 +29,6 @@ const router = createBrowserRouter([
       { path: "testi", element: <TestiAdmin /> },
       { path: "kontak", element: <KontakAdmin /> },
       { path: "paket/:id/edit", element: <EditPaket /> },
-      { path: "paket/id/delete", element: <DeletePaket /> },
       { path: "paket/create", element: <CreatePaket /> },
       { path: "logout", element: <Logout /> },
     ],

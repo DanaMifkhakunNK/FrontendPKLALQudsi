@@ -3,12 +3,14 @@ import Logo from "../assets/logo192.png";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/userContect";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const CreatePaket = () => {
-  const [title, setTitle] = useState("");
-  const [time, setTime] = useState("");
-  const [price, setPrice] = useState("");
-  const [img, setImg] = useState("");
+  const [judul, setJudul] = useState("");
+  const [tanggal, setTanggal] = useState("");
+  const [harga, setHarga] = useState("");
+  const [gambar, setGambar] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const { currentUser } = useContext(UserContext);
   const token = currentUser?.token;
@@ -18,6 +20,23 @@ const CreatePaket = () => {
       navigate("/admin");
     }
   }, []);
+
+  const createPaket = async (e) => {
+    e.preventDefault();
+    const postPaket = new FormData();
+    postPaket.set("judul", judul);
+    postPaket.set("tanggal", tanggal);
+    postPaket.set("harga", harga);
+    postPaket.set("gambar", gambar);
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/paket`, postPaket, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+      if (response.status == 201) {
+        return navigate("/paket");
+      }
+    } catch (err) {
+      setError(err.response.data.message);
+    }
+  };
 
   return (
     <div className="bg-primary">
@@ -42,16 +61,18 @@ const CreatePaket = () => {
           <div className="text-center md:text-left">
             <h3 className="mr-1 mb-2 my-8 py-2 pl-2 border-l-4 border-white/50 font-semibold text-white">Tambah Paket AL Qudsi</h3>
           </div>
-          <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Title Paket" value={title} onChange={(e) => setTitle(e.target.value)} autoFocus />
-          <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="text" placeholder="Waktu Keberangkatan" value={time} onChange={(e) => setTime(e.target.value)} />
-          <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="text" placeholder="Harga Paket" value={price} onChange={(e) => setPrice(e.target.value)} />
-          <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="file" onChange={(e) => setImg(e.target.files[0])} accept="png, jpg, jpeg" />
-
-          <div className="text-center md:text-left">
-            <button className="mt-4 bg-secondary hover:bg-black px-4 py-2 text-white uppercase rounded text-xs tracking-wider" type="submit">
-              Tambah
-            </button>
-          </div>
+          {error && <p className="bg-white/50 mb-3 rounded-xl text-white text-center ">{error}</p>}
+          <form onSubmit={createPaket}>
+            <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Judul Paket" value={judul} onChange={(e) => setJudul(e.target.value)} autoFocus required />
+            <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="text" placeholder="Tanggal Keberangkatan" value={tanggal} onChange={(e) => setTanggal(e.target.value)} required />
+            <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="text" placeholder="Harga Paket" value={harga} onChange={(e) => setHarga(e.target.value)} required />
+            <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="file" onChange={(e) => setGambar(e.target.files[0])} accept="png, jpg, jpeg" required />
+            <div className="text-center md:text-left">
+              <button className="mt-4 bg-white/50 hover:bg-white py-2 text-white hover:text-secondary uppercase rounded text-xs tracking-wider w-full" type="submit">
+                Tambah
+              </button>
+            </div>
+          </form>
         </div>
       </section>
 

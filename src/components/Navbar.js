@@ -75,7 +75,9 @@ function Navbar() {
               </ul>
             </div>
             <div className="flex items-center gap-4">
-              <button className="bg-gradient-to-r from-primary to-secondary hover:bg-bg-gradient-to-r hover:from-secondary hover:bg-primary transition-all duration-600 text-white px-3 py-1 rounded-full">Log Out</button>
+              <Link to={"/admin"} className="bg-gradient-to-r from-primary to-secondary hover:bg-bg-gradient-to-r hover:from-secondary hover:bg-primary transition-all duration-600 text-white px-3 py-1 rounded-full">
+                Login
+              </Link>
               <div className="md:hidden block">
                 {showMenu ? <HiMenuAlt1 onClick={toggleMenu} className=" cursor-pointer transition-all" size={30} /> : <HiMenuAlt3 onClick={toggleMenu} className="cursor-pointer transition-all" size={30} />}
               </div>

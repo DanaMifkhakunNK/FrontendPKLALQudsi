@@ -1,37 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import img1 from "../assets/brosur1.jpg";
-import img2 from "../assets/wp2.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { UserContext } from "../context/userContect";
 import Loader from "../components/Loader";
 import axios from "axios";
 
-const PlacesData = [
-  {
-    id: "1",
-    img: img1,
-    title: "Umrah Reguler",
-    time: "30 Juni 2024",
-    price: "30",
-  },
-  {
-    id: "2",
-    img: img2,
-    title: "Umrah Plus Turki",
-    time: "1 Juli 2024",
-    price: "35",
-  },
-  {
-    id: "3",
-    img: img1,
-    title: "Umrah Premium",
-    time: "2 Juli 2024",
-    price: "33",
-  },
-];
 function PaketAdmin() {
   //auth
   const navigate = useNavigate();
+  const location = useLocation();
   const { currentUser } = useContext(UserContext);
   const token = currentUser?.token;
 
@@ -60,31 +36,53 @@ function PaketAdmin() {
     fetchPaket();
   }, []);
 
+  const removePaket = async (id) => {
+    try {
+      const response = await axios.delete(`${process.env.REACT_APP_BASE_URL}/paket/${id}`, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
+      if (response.status == 200) {
+        if (location.pathname == "/paket") {
+          window.location.reload();
+        }
+      }
+    } catch (error) {
+      console.log("Tidak Bisa Delete Paket");
+    }
+  };
+
   if (isLoading) {
     return <Loader />;
   }
   return (
     <>
       {paket.length > 0 ? (
-        <div className="grid-auto-fit-sm container min-h-screen bg-primary lg:pt-20 pt-24 flex flex-col gap-2 z-0">
-          {paket.map(({ _id: id, gambar, judul }) => (
-            <paket key={id} className="flex items-center justify-between bg-white p-4 rounded-xl">
-              <div className="flex gap-8 w-full items-center">
-                <div className="w-[4rem] rounded-md overflow-hidden">
-                  <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${gambar}`} alt="" />
+        <div className=" container min-h-screen bg-primary lg:pt-20 pt-24 pb-16">
+          <div className="text-center flex justify-between  items-center">
+            <h3 className="mr-1 mb-2 my-4 py-2 pl-2 border-l-4 border-white/50 font-semibold text-white">Paket AL Qudsi</h3>
+            <Link to={"/paket/create"} className="bg-white hover:bg-white/50 py-2 px-2 text-secondary hover:text-white uppercase rounded text-xs tracking-wider ">
+              Tambah Paket
+            </Link>
+          </div>
+          <div className="grid-auto-fit-sm flex flex-col gap-2">
+            {paket.map(({ _id: id, gambar, judul }) => (
+              <paket key={id} className="flex items-center justify-between bg-white/70 p-4 rounded-xl">
+                <div className="flex gap-8 w-full items-center">
+                  <div className="w-[4rem] rounded-md overflow-hidden">
+                    <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${gambar}`} alt="" />
+                  </div>
+                  <h5 className="">{judul}</h5>
                 </div>
-                <h5 className="">{judul}</h5>
-              </div>
-              <div className="gap-2 flex">
-                <Link to={"/paket/${paket.id}/edit"} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
-                  Edit
-                </Link>
-                <Link to={"/paket/${paket.id}/delete"} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
-                  Delete
-                </Link>
-              </div>
-            </paket>
-          ))}
+                <div className="gap-2 flex">
+                  <Link to={`/paket/${id}/edit`} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
+                    Edit
+                  </Link>
+                  {/* <DeletePaket paketId={id} /> */}
+                  <Link onClick={() => removePaket(`${id}`)} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
+                    Delete
+                  </Link>
+                </div>
+              </paket>
+            ))}
+          </div>
         </div>
       ) : (
         <h2>Tidak Ada paket</h2>

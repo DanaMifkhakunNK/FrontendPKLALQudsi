@@ -1,28 +1,7 @@
 import React, { useState, useEffect } from "react";
-import image1 from "../assets/brosur1.jpg";
-import image2 from "../assets/brosur1.jpg";
+
 import axios from "axios";
 
-const PlacesData = [
-  {
-    image: image1,
-    title: "Umrah Reguler",
-    time: "30 Juni 2024",
-    price: "30",
-  },
-  {
-    image: image2,
-    title: "Umrah Plus Turki",
-    time: "1 Juli 2024",
-    price: "35",
-  },
-  {
-    image: image1,
-    title: "Umrah Premium",
-    time: "2 Juli 2024",
-    price: "33",
-  },
-];
 function Paket() {
   const [paket, setPaket] = useState([]);
   useEffect(() => {
