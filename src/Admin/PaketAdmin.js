@@ -1,8 +1,11 @@
-import React from "react";
-import Layout from "../components/Layout";
+import React, { useContext, useEffect, useState } from "react";
 import img1 from "../assets/brosur1.jpg";
 import img2 from "../assets/wp2.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/userContect";
+import Loader from "../components/Loader";
+import axios from "axios";
+
 const PlacesData = [
   {
     id: "1",
@@ -27,17 +30,50 @@ const PlacesData = [
   },
 ];
 function PaketAdmin() {
+  //auth
+  const navigate = useNavigate();
+  const { currentUser } = useContext(UserContext);
+  const token = currentUser?.token;
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/admin");
+    }
+  }, []);
+
+  //get
+  const [paket, setPaket] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    const fetchPaket = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/paket`);
+        setPaket(response?.data);
+      } catch (err) {
+        console.log(err);
+      }
+
+      setIsLoading(false);
+    };
+
+    fetchPaket();
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
-    <Layout>
-      <div className="grid-auto-fit-sm container min-h-screen bg-primary lg:pt-20 pt-24 flex flex-col gap-2">
-        {PlacesData.map((paket) => {
-          return (
-            <paket key={paket.id} className="flex items-center justify-between bg-white p-4 rounded-xl">
+    <>
+      {paket.length > 0 ? (
+        <div className="grid-auto-fit-sm container min-h-screen bg-primary lg:pt-20 pt-24 flex flex-col gap-2 z-0">
+          {paket.map(({ _id: id, gambar, judul }) => (
+            <paket key={id} className="flex items-center justify-between bg-white p-4 rounded-xl">
               <div className="flex gap-8 w-full items-center">
                 <div className="w-[4rem] rounded-md overflow-hidden">
-                  <img src={paket.img} alt="" />
+                  <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${gambar}`} alt="" />
                 </div>
-                <h5 className="">{paket.title}</h5>
+                <h5 className="">{judul}</h5>
               </div>
               <div className="gap-2 flex">
                 <Link to={"/paket/${paket.id}/edit"} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
@@ -48,10 +84,12 @@ function PaketAdmin() {
                 </Link>
               </div>
             </paket>
-          );
-        })}
-      </div>
-    </Layout>
+          ))}
+        </div>
+      ) : (
+        <h2>Tidak Ada paket</h2>
+      )}
+    </>
   );
 }
 

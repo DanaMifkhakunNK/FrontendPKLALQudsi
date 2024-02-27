@@ -1,13 +1,15 @@
 import React from "react";
-
+import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import NavbarAdmin from "./NavbarAdmin";
 
-const Layout = ({ children }) => {
+const Layout = () => {
   return (
     <>
       <NavbarAdmin />
-      <div className="bg-primary">{children}</div>
+      <div className="bg-primary">
+        <Outlet />
+      </div>
       <Footer />
     </>
   );

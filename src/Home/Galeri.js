@@ -94,7 +94,7 @@ function Galeri() {
   };
 
   return (
-    <div className="pt-16 bg-green-100" id="galeri">
+    <div className="pt-16 " id="galeri">
       <div className="container">
         {/* 
       </div>

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Logo from "../assets/logo192.png";
 import { Link } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
 import ResponsiveAdmin from "./ResponsiveAdmin";
+import { UserContext } from "../context/userContect";
 
 export const AdminLinks = [
   {
@@ -25,6 +26,7 @@ export const AdminLinks = [
 ];
 function NavbarAdmin() {
   const [showMenu, setShowMenu] = useState(false);
+  const { currentUser } = useContext(UserContext);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -66,7 +68,9 @@ function NavbarAdmin() {
               </ul>
             </div>
             <div className="flex items-center gap-4">
-              <button className="bg-gradient-to-r from-primary to-secondary hover:bg-bg-gradient-to-r hover:from-secondary hover:bg-primary transition-all duration-600 text-white px-3 py-1 rounded-full">Log Out</button>
+              <Link to="/logout" className="bg-gradient-to-r from-primary to-secondary hover:bg-bg-gradient-to-r hover:from-secondary hover:bg-primary transition-all duration-600 text-white px-3 py-1 rounded-full">
+                Log Out
+              </Link>
               <div className="md:hidden block">
                 {showMenu ? <HiMenuAlt1 onClick={toggleMenu} className=" cursor-pointer transition-all" size={30} /> : <HiMenuAlt3 onClick={toggleMenu} className="cursor-pointer transition-all" size={30} />}
               </div>
