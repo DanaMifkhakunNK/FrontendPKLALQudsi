@@ -1,60 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import img1 from "../assets/galeri1.jpg";
-import img2 from "../assets/galeri2.jpg";
-import img3 from "../assets/galeri3.jpg";
+import axios from "axios";
 
 function Galeri() {
-  const slides = [
-    {
-      url: img1,
-    },
-    {
-      url: img2,
-    },
-    {
-      url: img1,
-    },
-    {
-      url: img2,
-    },
-    {
-      url: img1,
-    },
-    {
-      url: img2,
-    },
-    {
-      url: img1,
-    },
-    {
-      url: img2,
-    },
-    {
-      url: img1,
-    },
-    {
-      url: img2,
-    },
-    {
-      url: img1,
-    },
-    {
-      url: img2,
-    },
-    {
-      url: img1,
-    },
-    {
-      url: img2,
-    },
-    {
-      url: img1,
-    },
-    {
-      url: img3,
-    },
-  ];
+  const [getgaleri, setGetgaleri] = useState([]);
+  useEffect(() => {
+    const fecthGaleri = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/galeri`);
+        setGetgaleri(response?.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fecthGaleri();
+  }, []);
+
   var settings = {
     arrows: false,
     infinite: true,
@@ -99,11 +60,11 @@ function Galeri() {
         <div data-aos="zoom-in" data-aos-duration="300" className="grid grid-cols-1 mx-auto gap-6">
           <h1 className=" my-8 border-l-8 border-primary/50 py-1 pl-1 text-2xl font-bold">Galeri</h1>
           <Slider {...settings}>
-            {slides.map(({ url }) => {
+            {getgaleri.map(({ galeri }) => {
               return (
                 <div className="my-6">
-                  <div className="flex flex-col justify-center items-center gap-4 lg:h-[30vh] md:h-[25vh] h-[40vh] text-center shadow-lg p-4 mx-4 rounded-xl bg-primary/10 relative">
-                    <img src={url} alt="" className=" block mx-auto rounded-md" />
+                  <div className="flex flex-col justify-center items-center gap-2 text-center shadow-xl p-4 mx-4 rounded-xl  bg-primary/10 relative">
+                    <img src={`${process.env.REACT_APP_ASSETS_URL}/galeri/${galeri}`} alt="" className="rounded-lg block mx-auto shadow-lg" />
                   </div>
                 </div>
               );
