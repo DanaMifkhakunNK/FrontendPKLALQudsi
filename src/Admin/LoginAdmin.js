@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
-import img from "../assets/logo192.png";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../context/userContect.js";
 
@@ -32,11 +32,26 @@ function LoginAdmin() {
       setError(err.response.data.message);
     }
   };
+
+  const [kontak, setKontak] = useState([]);
+  useEffect(() => {
+    const fetchKontak = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/kontak`);
+        setKontak(response?.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchKontak();
+  }, []);
   return (
     <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0">
-      <div className="md:w-1/3 max-w-sm">
-        <img src={img} alt="" />
-      </div>
+      {kontak.map(({ logo }) => (
+        <div className="md:w-1/3 max-w-sm">
+          <img src={`${process.env.REACT_APP_ASSETS_URL}/logo/${logo}`} alt="" />
+        </div>
+      ))}
       <form className="md:w-1/3 max-w-sm" onSubmit={loginUser}>
         <div className="text-center md:text-left">
           <h3 className="mr-1 mb-2 font-semibold">Admin AL Qudsi</h3>

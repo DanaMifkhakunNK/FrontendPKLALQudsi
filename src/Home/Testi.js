@@ -55,7 +55,7 @@ function Testi() {
   }, []);
   return (
     <>
-      <div data-aos="fade-up" data-aos-duration="300" className="pt-20" id="testi">
+      <div data-aos="fade-up" data-aos-duration="300" className="pt-20 pb-16" id="testi">
         <div className="container">
           {/* Header section */}
           <div className="text-center mb-20 max-w-[400px] mx-auto">

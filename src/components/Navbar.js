@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Logo from "../assets/logo192.png";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
@@ -28,6 +28,18 @@ export const NavbarLinks = [
   },
 ];
 function Navbar() {
+  const [kontak, setKontak] = useState([]);
+  useEffect(() => {
+    const fetchKontak = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/kontak`);
+        setKontak(response?.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchKontak();
+  }, []);
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -39,11 +51,13 @@ function Navbar() {
         <div className="container py-3 sm:py-0">
           <div className="flex justify-between items-center">
             {/*logo*/}
-            <div>
-              <Link>
-                <img src={Logo} alt="" className="h-16" />
-              </Link>
-            </div>
+            {kontak.map(({ logo }) => (
+              <div>
+                <Link>
+                  <img src={`${process.env.REACT_APP_ASSETS_URL}/logo/${logo}`} alt="" className="h-16" />
+                </Link>
+              </div>
+            ))}
             {/*menu*/}
             <div className="hidden md:block">
               <ul className="flex items-center gap-6">
