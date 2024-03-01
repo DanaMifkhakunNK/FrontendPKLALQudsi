@@ -62,30 +62,35 @@ function PaketAdmin() {
               Tambah Paket
             </Link>
           </div>
-          <div className="grid-auto-fit-sm flex flex-col gap-2">
+          <div className="grid-auto-fit-lg grid gap-2">
             {paket.map(({ _id: id, gambar, judul }) => (
-              <paket key={id} className="flex items-center justify-between bg-white/70 p-4 rounded-xl">
-                <div className="flex gap-8 w-full items-center">
-                  <div className="w-[4rem] rounded-md overflow-hidden">
-                    <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${gambar}`} alt="" />
+              <paket key={id} className="p-4 bg-white/70 rounded-xl">
+                <div className="gap-8 w-full items-center">
+                  <div className=" flex justify-between items-center pb-2">
+                    <h4 className="font-semibold pt-2">{judul}</h4>
+                    <div className="gap-2 flex">
+                      <Link to={`/paket/${id}/edit`} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
+                        Edit
+                      </Link>
+                      <Link onClick={() => removePaket(`${id}`)} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
+                        Delete
+                      </Link>
+                    </div>
                   </div>
-                  <h5 className="">{judul}</h5>
-                </div>
-                <div className="gap-2 flex">
-                  <Link to={`/paket/${id}/edit`} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
-                    Edit
-                  </Link>
-                  {/* <DeletePaket paketId={id} /> */}
-                  <Link onClick={() => removePaket(`${id}`)} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
-                    Delete
-                  </Link>
+                  <div className=" rounded-lg overflow-hidden shadow-lg">
+                    <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${gambar}`} />
+                  </div>
                 </div>
               </paket>
             ))}
           </div>
         </div>
       ) : (
-        <h2>Tidak Ada paket</h2>
+        <div className=" container min-h-screen bg-primary lg:pt-20 pt-24 pb-16">
+          <div className=" md:flex md:justify-between  items-center pb-4">
+            <h3 className="mr-1 mb-2 my-4 py-2 pl-2 border-l-4 border-white/50 font-semibold text-white">Paket AL Qudsi Tidak Tersedia</h3>
+          </div>
+        </div>
       )}
     </>
   );

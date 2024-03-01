@@ -18,7 +18,7 @@ function Paket() {
 
   return (
     <>
-      <div className="pt-16  py-10" id="paket">
+      <div className="pt-5 pb-10" id="paket">
         <section data-aos="fade-up" className="container ">
           <h1 className=" my-8 border-l-8 border-primary/50 py-2 pl-2 text-3xl font-bold">Best Places to Visit</h1>
           <div className=" grid-auto-fit-sm grid gap-4">
@@ -33,7 +33,7 @@ function Paket() {
                   <p className="line-clamp-2">{tanggal}</p>
                   <div className="flex items-center justify-between border-t-2 py-3 !mt-3">
                     <div>
-                      <p className="text-2xl font-bold">${harga}</p>
+                      <p className="text-2xl font-bold">Rp{harga}</p>
                     </div>
                     <a
                       href={`https://wa.me/08231231412?text=Halo%20Admin%20AL-Qudsi%20Saya%20Tertarik%20Dengan%20${judul}.%20Bisa%20Infokan%20Lebih Lanjut.?%20`}

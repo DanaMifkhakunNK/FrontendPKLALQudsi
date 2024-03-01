@@ -72,9 +72,9 @@ function GaleriAdmin() {
           <div className=" md:flex md:justify-between  items-center pb-4">
             <h3 className="mr-1 mb-2 my-4 py-2 pl-2 border-l-4 border-white/50 font-semibold text-white">Paket AL Qudsi</h3>
             <form onSubmit={createGaleri} className="md:flex gap-2">
-              <input className="text-sm md:py-2 px-4 py-1 border border-solid border-gray-300 rounded mt-4" type="file" onChange={(e) => setGaleri(e.target.files[0])} accept="png, jpg, jpeg" required />
+              <input className="text-sm md:py-2 px-3 w-full py-1 border border-solid border-gray-300 rounded mt-4" type="file" onChange={(e) => setGaleri(e.target.files[0])} accept="png, jpg, jpeg" required />
               <div>
-                <button className="mt-4 md:px-4 md:py-4 px-2 py-2  bg-white/50 hover:bg-white  text-white hover:text-secondary uppercase rounded text-xs tracking-wider w-full" type="submit">
+                <button className="mt-5 md:px-4 md:py-3 px-2 py-2  bg-white/50 hover:bg-white  text-white hover:text-secondary uppercase rounded text-xs tracking-wider w-full" type="submit">
                   Tambah
                 </button>
               </div>
@@ -82,7 +82,7 @@ function GaleriAdmin() {
           </div>
           <div className="grid-auto-fit-lg grid gap-2">
             {getgaleri.map(({ _id: id, galeri }) => (
-              <paket key={id} className="p-4 bg-white/70 rounded-xl">
+              <galeri key={id} className="p-4 bg-white/70 rounded-xl">
                 <div className="gap-8 w-full items-center">
                   <div className=" rounded-md overflow-hidden">
                     <img src={`${process.env.REACT_APP_ASSETS_URL}/galeri/${galeri}`} />
@@ -93,7 +93,7 @@ function GaleriAdmin() {
                     </Link>
                   </div>
                 </div>
-              </paket>
+              </galeri>
             ))}
           </div>
         </div>

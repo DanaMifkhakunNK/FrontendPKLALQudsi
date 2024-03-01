@@ -20,7 +20,7 @@ function Galeri() {
     arrows: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -29,15 +29,7 @@ function Galeri() {
     pauseOnFocus: true,
     responsive: [
       {
-        breakpoint: 1025,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 640,
+        breakpoint: 769,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,

@@ -11,9 +11,11 @@ import CreatePaket from "./Admin/CreatePaket";
 import GaleriAdmin from "./Admin/GaleriAdmin";
 import PaketAdmin from "./Admin/PaketAdmin";
 import TestiAdmin from "./Admin/TestiAdmin";
+import EditTesti from "./Admin/EditTesti";
 import KontakAdmin from "./Admin/KontakAdmin";
 import Logout from "./Admin/Logout";
 import UserProvider from "./context/userContect";
+import CreateTesti from "./Admin/CreateTesti";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,8 @@ const router = createBrowserRouter([
       { path: "kontak", element: <KontakAdmin /> },
       { path: "paket/:id/edit", element: <EditPaket /> },
       { path: "paket/create", element: <CreatePaket /> },
+      { path: "testi/:id/edit", element: <EditTesti /> },
+      { path: "testi/create", element: <CreateTesti /> },
       { path: "logout", element: <Logout /> },
     ],
   },
