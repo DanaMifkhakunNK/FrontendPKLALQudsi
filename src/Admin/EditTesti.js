@@ -95,7 +95,7 @@ const EditTesti = () => {
             <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="file" onChange={(e) => setTestigambar(e.target.files[0])} accept="png, jpg, jpeg" required />
             <div className="text-center md:text-left">
               <button className="mt-4 bg-white/50 hover:bg-white py-2 text-white hover:text-secondary uppercase rounded text-xs tracking-wider w-full" type="submit">
-                Tambah
+                simpan
               </button>
             </div>
           </form>

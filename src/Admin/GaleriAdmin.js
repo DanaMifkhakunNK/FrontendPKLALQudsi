@@ -70,9 +70,9 @@ function GaleriAdmin() {
       {getgaleri.length > 0 ? (
         <div className=" container min-h-screen bg-primary lg:pt-20 pt-24 pb-16">
           <div className=" md:flex md:justify-between  items-center pb-4">
-            <h3 className="mr-1 mb-2 my-4 py-2 pl-2 border-l-4 border-white/50 font-semibold text-white">Paket AL Qudsi</h3>
+            <h3 className="mr-1 mb-2 my-3 py-2 pl-2 border-l-4 border-white/50 font-semibold text-white">Galeri AL Qudsi</h3>
             <form onSubmit={createGaleri} className="md:flex gap-2">
-              <input className="text-sm md:py-2 px-3 w-full py-1 border border-solid border-gray-300 rounded mt-4" type="file" onChange={(e) => setGaleri(e.target.files[0])} accept="png, jpg, jpeg" required />
+              <input className="text-sm md:py-2 px-1 w-full py-1 border border-solid border-gray-300 rounded mt-4" type="file" onChange={(e) => setGaleri(e.target.files[0])} accept="png, jpg, jpeg" required />
               <div>
                 <button className="mt-5 md:px-4 md:py-3 px-2 py-2  bg-white/50 hover:bg-white  text-white hover:text-secondary uppercase rounded text-xs tracking-wider w-full" type="submit">
                   Tambah

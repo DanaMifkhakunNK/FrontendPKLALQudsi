@@ -70,7 +70,7 @@ function Kontak() {
             ))}
           </div>
           <div>
-            <div className="text-center py-5 border-t-2 border-gray-300/50 bg-primary text-white">@copyright 2024 All rights reserved || Made with ❤️ by Dilshad</div>
+            <div className="text-center py-5 border-t-2 border-gray-300/50 bg-primary text-white">Copyright © Al Qudsi 2024</div>
           </div>
         </div>
       </div>

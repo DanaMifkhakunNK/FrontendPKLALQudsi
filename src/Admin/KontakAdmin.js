@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/userContect";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
 function KontakAdmin() {
@@ -10,10 +10,11 @@ function KontakAdmin() {
   const [ig, setIg] = useState("");
   const [logo, setLogo] = useState("");
   const navigate = useNavigate();
-  const { id } = useParams();
+  const location = useLocation();
   const { currentUser } = useContext(UserContext);
   const token = currentUser?.token;
   const [error, setError] = useState("");
+
   useEffect(() => {
     if (!token) {
       navigate("/admin");
@@ -46,7 +47,9 @@ function KontakAdmin() {
     try {
       const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/kontak/65e1eab65c98102a6b39d239`, postKontak, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
       if (response.status == 200) {
-        return navigate("/kontak/65e1eab65c98102a6b39d239/edit");
+        if (location.pathname == "/kontak/65e1eab65c98102a6b39d239/edit") {
+          window.location.reload();
+        }
       }
     } catch (err) {
       setError(err.response.data.message);
@@ -57,9 +60,10 @@ function KontakAdmin() {
     <section className="min-h-screen flex flex-col md:flex-row justify-center lg:pt-20 pt-24 space-y-10 md:space-y-0 md:space-x-16 my-2 mx-5 md:mx-0 md:my-0">
       <div className="md:w-1/3">
         <div className="text-center md:text-left">
-          <h3 className="mr-1 mb-2 my-8 py-2 pl-2 border-l-4 border-white/50 font-semibold text-white">Edit Paket AL qudsi</h3>
+          <h3 className="mr-1 mb-2 my-8 py-2 pl-2 border-l-4 border-white/50 font-semibold text-white">Edit Kontak AL qudsi</h3>
         </div>
         {error && <p className="bg-white/50 mb-3 rounded-xl text-white text-center ">{error}</p>}
+
         <form onSubmit={editKontak}>
           <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded" type="text" placeholder="Alamat Al Qudsi" value={alamat} onChange={(e) => setAlamat(e.target.value)} autoFocus required />
           <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="text" placeholder="Whatsapp Al Qudsi" value={wa} onChange={(e) => setWa(e.target.value)} required />
@@ -68,7 +72,7 @@ function KontakAdmin() {
           <input className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4" type="file" onChange={(e) => setLogo(e.target.files[0])} accept="png, jpg, jpeg" required />
           <div className="text-center md:text-left">
             <button className="mt-4 bg-white/50 hover:bg-white py-2 text-white hover:text-secondary uppercase rounded text-xs tracking-wider w-full" type="submit">
-              Tambah
+              Simpan
             </button>
           </div>
         </form>

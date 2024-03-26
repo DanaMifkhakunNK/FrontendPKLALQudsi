@@ -6,7 +6,7 @@ function Logout() {
   const { setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
   setCurrentUser(null);
-  navigate("/admin");
+  navigate("/");
   return <></>;
 }
 

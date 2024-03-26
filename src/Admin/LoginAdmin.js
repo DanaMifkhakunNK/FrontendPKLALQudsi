@@ -27,7 +27,7 @@ function LoginAdmin() {
       const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/users/login`, adminData);
       const user = await response.data;
       setCurrentUser(user);
-      navigate("/paket");
+      navigate("/dashboard");
     } catch (err) {
       setError(err.response.data.message);
     }
