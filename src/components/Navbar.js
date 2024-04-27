@@ -67,13 +67,13 @@ function Navbar() {
                   </NavHashLink>
                 </li>
                 <li className="py-4">
-                  <NavHashLink to="#paket" activeClassName="active">
-                    Paket
+                  <NavHashLink to="#galeri" activeClassName="active">
+                    Galeri
                   </NavHashLink>
                 </li>
                 <li className="py-4">
-                  <NavHashLink to="#galeri" activeClassName="active">
-                    Galeri
+                  <NavHashLink to="#paket" activeClassName="active">
+                    Paket
                   </NavHashLink>
                 </li>
                 <li className="py-4">

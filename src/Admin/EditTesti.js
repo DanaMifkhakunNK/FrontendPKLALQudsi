@@ -86,7 +86,7 @@ const EditTesti = () => {
       <section className="min-h-screen flex flex-col md:flex-row justify-center lg:pt-20 pt-24 space-y-10 md:space-y-0 md:space-x-16 my-2 mx-5 md:mx-0 md:my-0">
         <div className="md:w-1/3">
           <div className="text-center md:text-left">
-            <h3 className="mr-1 mb-2 my-8 py-2 pl-2 border-l-4 border-white/50 font-semibold text-white">Edit Paket AL qudsi</h3>
+            <h3 className="mr-1 mb-2 my-8 py-2 pl-2 border-l-4 border-white/50 font-semibold text-white">Edit Testi AL qudsi</h3>
           </div>
           {error && <p className="bg-white/50 mb-3 rounded-xl text-white text-center ">{error}</p>}
           <form onSubmit={editTesti}>

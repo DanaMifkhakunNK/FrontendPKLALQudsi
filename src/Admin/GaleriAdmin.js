@@ -3,7 +3,7 @@ import { UserContext } from "../context/userContect";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import Loader from "../components/Loader";
 import axios from "axios";
-
+import { RiDeleteBin6Fill } from "react-icons/ri";
 function GaleriAdmin() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -80,7 +80,7 @@ function GaleriAdmin() {
               </div>
             </form>
           </div>
-          <div className="grid-auto-fit-lg grid gap-2">
+          <div className="grid-auto-fit-xs grid gap-2">
             {getgaleri.map(({ _id: id, galeri }) => (
               <galeri key={id} className="p-4 bg-white/70 rounded-xl">
                 <div className="gap-8 w-full items-center">
@@ -89,7 +89,7 @@ function GaleriAdmin() {
                   </div>
                   <div className="gap-2 flex justify-center">
                     <Link onClick={() => removeGaleri(`${id}`)} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
-                      Delete
+                      <RiDeleteBin6Fill />
                     </Link>
                   </div>
                 </div>

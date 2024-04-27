@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FooterLogo from "../assets/logo192.png";
-import { FaFacebook, FaInstagram, FaLocationArrow, FaWhatsapp } from "react-icons/fa";
+import { FaTiktok, FaInstagram, FaLocationArrow, FaWhatsapp } from "react-icons/fa";
 import NatureVid from "../assets/footer.mp4";
 
 function Kontak() {
@@ -17,6 +16,7 @@ function Kontak() {
     };
     fetchKontak();
   }, []);
+
   return (
     <>
       <div className="pt-16 relative overflow-hidden" id="kontak">
@@ -35,24 +35,27 @@ function Kontak() {
                     <img src={`${process.env.REACT_APP_ASSETS_URL}/logo/${logo}`} alt="" className="max-h-[60px]" />
                     {/* TravelloGo */}
                   </h1>
-                  <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde facere ab hic accusamus omnis dolor voluptatibus illo, tempore eum tenetur.</p>
-                  <br />
-                  <div className="flex items-center gap-2 ">
-                    <FaLocationArrow className="text-2xl" />
-                    <p>{alamat}</p>
-                  </div>
+                  <p>{alamat}</p>
+
                   {/* social handles */}
                   <div>
-                    <div className="flex items-center gap-3 mt-3">
-                      <a href={wa}>
+                    <div className="flex mt-2 gap-1 items-center">
+                      <a href={`https://wa.me/${wa}?text=Halo%20Admin`}>
                         <FaWhatsapp className="text-3xl" />
                       </a>
-                      <a href={fb}>
+                      <p className="">{wa}</p>
+                    </div>
+                    <div className="flex mt-2 gap-1 items-center">
+                      <a href={ig}>
                         <FaInstagram className="text-3xl" />
                       </a>
-                      <a href={ig}>
-                        <FaFacebook className="text-3xl" />
+                      <p className="">alqudsitourtravel</p>
+                    </div>
+                    <div className="flex mt-2 gap-1 items-center">
+                      <a href={fb}>
+                        <FaTiktok className="text-3xl" />
                       </a>
+                      <p className="">alqudsitour_travel</p>
                     </div>
                   </div>
                 </div>
@@ -70,7 +73,7 @@ function Kontak() {
             ))}
           </div>
           <div>
-            <div className="text-center py-5 border-t-2 border-gray-300/50 bg-primary text-white">Copyright © Al Qudsi 2024</div>
+            <div className="text-center py-5 border-t-2 border-gray-300/50 bg-primary text-white">Copyright © Al Qudsi Tour And Travel 2024</div>
           </div>
         </div>
       </div>

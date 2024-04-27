@@ -4,7 +4,7 @@ import axios from "axios";
 
 function Testi() {
   var settings = {
-    dots: true,
+    dots: false,
     arrows: false,
     infinite: true,
     speed: 500,
@@ -41,6 +41,7 @@ function Testi() {
       },
     ],
   };
+
   const [testi, setTesti] = useState([]);
   useEffect(() => {
     const fecthTesti = async () => {
@@ -53,15 +54,18 @@ function Testi() {
     };
     fecthTesti();
   }, []);
+
   return (
     <>
       <div data-aos="fade-up" data-aos-duration="300" className="pt-20 pb-16" id="testi">
         <div className="container">
           {/* Header section */}
-          <div className="text-center mb-20 max-w-[400px] mx-auto">
-            <p className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Testimonial</p>
-            <h1 className="text-3xl font-bold">Testimonial</h1>
-            <p className="text-xs text-gray-400"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero nesciunt explicabo a! Laborum delectus aliquam labore, earum rerum quam! Nulla?</p>
+          <div className="text-center mb-4 max-w-[700px] mx-auto">
+            <h1 className="text-xl font-bold">Testimoni AL Qudsi</h1>
+            <p className="pt-2 text-center text-sm">
+              Simak pengalaman dan kesaksian langsung dari para jamaah yang telah mempercayakan perjalanan haji dan umrah mereka kepada Biro Haji Al Qudsi. Testimoni mereka adalah cerminan dari kepuasan dan keberhasilan kami dalam
+              menyelenggarakan perjalanan ibadah yang berkualitas tinggi dan tak terlupakan
+            </p>
           </div>
           {/* testimonial section */}
           <div data-aos="zoom-in" data-aos-duration="300" className="grid grid-cols-1 mx-auto gap-6">

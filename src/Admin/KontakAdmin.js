@@ -47,8 +47,8 @@ function KontakAdmin() {
     try {
       const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/kontak/65e1eab65c98102a6b39d239`, postKontak, { withCredentials: true, headers: { Authorization: `Bearer ${token}` } });
       if (response.status == 200) {
-        if (location.pathname == "/kontak/65e1eab65c98102a6b39d239/edit") {
-          window.location.reload();
+        if (location.pathname == "/kontak/65e1eab65c98102a6b39d239") {
+          return navigate("/dashboard");
         }
       }
     } catch (err) {

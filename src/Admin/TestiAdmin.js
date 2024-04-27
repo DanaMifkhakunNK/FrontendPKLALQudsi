@@ -3,7 +3,8 @@ import { UserContext } from "../context/userContect";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import Loader from "../components/Loader";
 import axios from "axios";
-
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin6Fill } from "react-icons/ri";
 function TestiAdmin() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -61,26 +62,24 @@ function TestiAdmin() {
               Tambah Testimoni
             </Link>
           </div>
-          <div className="grid-auto-fit-lg grid gap-2">
+          <div className="grid-auto-fit-xs grid gap-2">
             {testi.map(({ _id: id, testigambar, nama }) => (
-              <testi key={id} className="p-4 bg-white/70 rounded-xl">
-                <div className="gap-8 w-full items-center">
-                  <div className=" flex justify-between items-center pb-2">
-                    <h4 className="font-semibold pt-2">{nama}</h4>
-                    <div className="gap-2 flex">
-                      <Link to={`/testi/${id}/edit`} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
-                        Edit
-                      </Link>
-                      <Link onClick={() => removeTesti(`${id}`)} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
-                        Delete
-                      </Link>
-                    </div>
-                  </div>
-                  <div className=" rounded-full overflow-hidden shadow-lg">
-                    <img src={`${process.env.REACT_APP_ASSETS_URL}/testi/${testigambar}`} />
+              <div key={id} className="p-2 bg-white/70 rounded-xl">
+                <div className="overflow-hidden">
+                  <img src={`${process.env.REACT_APP_ASSETS_URL}/testi/${testigambar}`} alt="No image" className="mx-auto cursor-pointer object-cover transition duration-700 hover:skew-x-2 hover:scale-110" />
+                </div>
+                <div className="p-2">
+                  <h1 className="font-bold text-xl">{nama}</h1>
+                  <div className="flex justify-between border-t-2 border-secondary/50">
+                    <Link to={`/testi/${id}/edit`} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
+                      <FaEdit />
+                    </Link>
+                    <Link onClick={() => removeTesti(`${id}`)} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
+                      <RiDeleteBin6Fill />
+                    </Link>
                   </div>
                 </div>
-              </testi>
+              </div>
             ))}
           </div>
         </div>

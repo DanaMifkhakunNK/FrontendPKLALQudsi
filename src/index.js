@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       { path: "galeri", element: <GaleriAdmin /> },
       { path: "paket", element: <PaketAdmin /> },
       { path: "testi", element: <TestiAdmin /> },
-      { path: "kontak", element: <KontakAdmin /> },
+      { path: "kontak/65e1eab65c98102a6b39d239", element: <KontakAdmin /> },
       { path: "paket/:id/edit", element: <EditPaket /> },
       { path: "paket/create", element: <CreatePaket /> },
       { path: "testi/:id/edit", element: <EditTesti /> },

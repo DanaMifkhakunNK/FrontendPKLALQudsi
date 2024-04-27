@@ -47,21 +47,29 @@ function Galeri() {
   };
 
   return (
-    <div className="pt-16 " id="galeri">
+    <div className="pt-16" id="galeri">
       <div className="container">
-        <div data-aos="zoom-in" data-aos-duration="300" className="grid grid-cols-1 mx-auto gap-6">
-          <h1 className=" my-8 border-l-8 border-primary/50 py-1 pl-1 text-2xl font-bold">Galeri</h1>
-          <Slider {...settings}>
-            {getgaleri.map(({ galeri }) => {
-              return (
-                <div className="my-6">
-                  <div className="flex flex-col justify-center items-center gap-2 text-center shadow-xl p-4 mx-4 rounded-xl  bg-primary/10 relative">
-                    <img src={`${process.env.REACT_APP_ASSETS_URL}/galeri/${galeri}`} alt="" className="rounded-lg block mx-auto shadow-lg" />
+        <div data-aos="zoom-in" data-aos-duration="300">
+          <div className="text-center mb-4 max-w-[700px] mx-auto">
+            <h1 className="text-xl font-bold">Galeri AL Qudsi</h1>
+            <p className="pt-2 text-center text-sm">
+              Nikmati momen-momen penuh makna yang telah kami abadikan dalam album foto. Kami berharap galeri ini dapat memberikan gambaran yang lebih jelas tentang pengalaman yang kami tawarkan dan menjadi sumber inspirasi bagi perjalanan
+              ibadah Anda yang akan datang.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 mx-auto gap-6">
+            <Slider {...settings}>
+              {getgaleri.map(({ galeri }) => {
+                return (
+                  <div className="">
+                    <div className="flex flex-col justify-center items-center gap-2 text-center shadow-sm p-4 mx-4 rounded-xl  bg-primary/10 relative">
+                      <img src={`${process.env.REACT_APP_ASSETS_URL}/galeri/${galeri}`} alt="" className="rounded-lg block mx-auto shadow-sm   lg:h-[300px] h-[220px]" />
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </Slider>
+                );
+              })}
+            </Slider>
+          </div>
         </div>
       </div>
     </div>

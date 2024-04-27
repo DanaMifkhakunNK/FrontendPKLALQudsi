@@ -2,6 +2,24 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+export const DashLinks = [
+  {
+    title: "PAKET",
+    link: "/paket",
+  },
+  {
+    title: "GALERI",
+    link: "/galeri",
+  },
+  {
+    title: "TESTIMONI",
+    link: "/testi",
+  },
+  {
+    title: "KONTAK",
+    link: "/kontak/65e1eab65c98102a6b39d239",
+  },
+];
 function Dashboard() {
   const [kontak, setKontak] = useState([]);
   useEffect(() => {
@@ -38,55 +56,19 @@ function Dashboard() {
             </div>
           </div>
         </nav>
-        <div className="grid gap-2">
-          <div className="p-4 bg-white/70 rounded-xl">
-            <div className="gap-8 w-full items-center">
-              <div className=" flex justify-between items-center pb-2">
-                <h4 className="font-semibold pt-2">PAKET</h4>
-                <div className="gap-2 flex">
-                  <Link to="/paket" className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
+        <div className="grid-auto-fit-xl grid gap-2">
+          {DashLinks.map(({ _id: id, title, link }) => (
+            <div key={id} className="p-2 bg-white/70 rounded-xl">
+              <div className="p-2">
+                <h1 className="font-bold text-xl">{title}</h1>
+                <div className="flex justify-between border-t-2 border-secondary/50">
+                  <Link to={link} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
                     Selengkapnya
                   </Link>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="p-4 bg-white/70 rounded-xl">
-            <div className="gap-8 w-full items-center">
-              <div className=" flex justify-between items-center pb-2">
-                <h4 className="font-semibold pt-2">GALERI</h4>
-                <div className="gap-2 flex">
-                  <Link to={`/galeri`} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
-                    Selengkapnya
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="p-4 bg-white/70 rounded-xl">
-            <div className="gap-8 w-full items-center">
-              <div className=" flex justify-between items-center pb-2">
-                <h4 className="font-semibold pt-2">TESTI</h4>
-                <div className="gap-2 flex">
-                  <Link to={`/testi`} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
-                    Selengkapnya
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="p-4 bg-white/70 rounded-xl">
-            <div className="gap-8 w-full items-center">
-              <div className=" flex justify-between items-center pb-2">
-                <h4 className="font-semibold pt-2">KONTAK</h4>
-                <div className="gap-2 flex">
-                  <Link to={`/kontak`} className=" button mt-4 bg-primary hover:bg-primary/50 px-4 py-2 text-white uppercase rounded text-xs tracking-wider">
-                    Selengkapnya
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
